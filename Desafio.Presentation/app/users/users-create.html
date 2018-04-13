@@ -1,0 +1,216 @@
+﻿<div class="col-md-6 col-md-offset-3" ng-controller="UserController as ctrl" ng-if="acc.role.userCreated">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cadastrar Novo Usuário</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" name="userForm">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="firstname">Nome</label>
+                    <input type="text" class="form-control" ng-model="ctrl.user.firstName" id="firstname" name="firstname" placeholder="Digite o nome"
+                           ng-required="true"
+                           ng-minlength="4"
+                           ng-maxlength="30">
+                </div>
+                <div ng-messages="userForm.firstname.$error" ng-if="userForm.firstname.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha o nome!
+                    </div>
+                    <div ng-message="minlength">
+                        Por favor Preencha o nome com no minimo 4 caracteres.
+                    </div>
+                    <div ng-message="maxlength">
+                        O tamanho maximo permitido e de 30 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="lastname">Sobrenome</label>
+                    <input type="text" class="form-control" id="lastname" ng-model="ctrl.user.lastName" name="lastname" placeholder="Digite o sobrenome" ng-required="true">
+                </div>
+                <div ng-messages="userForm.lastname.$error" ng-if="userForm.lastname.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha o sobrenome!
+                    </div>
+                    <div ng-message="minlength">
+                        Por favor Preencha o sobrenome com no minimo 4 caracteres
+                    </div>
+                    <div ng-message="maxlength">
+                        O tamanho maximo permitido e de 30 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" ng-model="ctrl.user.cpf" name="cpf"
+                           ui-mask="999.999.999-99"
+                           ng-required="true"
+                           ng-pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/">
+                </div>
+                <div ng-messages="userForm.cpf.$error" ng-if="userForm.cpf.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha o cpf!
+                    </div>
+                    <div ng-message="pattern">
+                        Por favor digite um cpf valido
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="age">Idade</label>
+                    <input type="text" class="form-control" id="age" ng-model="ctrl.user.age" name="age" ui-mask="99" ng-required="true">
+                </div>
+                <div ng-show="userForm.age.$error" ng-if="userForm.age.$dirty">
+                    <span ng-show="required">
+                        Por favor Preencha a idade!
+                    </span>
+                </div>
+
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nacionality">Nacionalidade</label>
+                    <input type="text" class="form-control" id="nacionality" ng-model="ctrl.user.nationality" name="nationality" placeholder="Digite nacionalidade"
+                           ng-required="true"
+                           ng-minlength="4"
+                           ng-maxlength="30">
+                </div>
+                <div ng-messages="userForm.nationality.$error" ng-if="userForm.nationality.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha a nacionalidade!
+                    </div>
+                    <div ng-message="minlength">
+                        Por favor Preencha o sobrenome com no minimo 4 caracteres
+                    </div>
+                    <div ng-message="maxlength">
+                        O tamanho maximo permitido e de 30 caracteres
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" class="form-control" id="phone" ng-model="ctrl.user.phone" name="phone" ui-mask="(99)9999-9999"
+                           ng-required="true">
+                    <div ng-messages="userForm.phone.$error" ng-if="userForm.phone.$dirty">
+                        <span ng-message="required">
+                            Por favor Preencha a telefone!
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="cell-phone">Celular</label>
+                    <input type="tel" class="form-control" id="cell-phone" ng-model="ctrl.user.cellPhone" name="cellPhone" ui-mask="(99)9 9999-9999"
+                           ng-required="true">
+                </div>
+                <div ng-messages="userForm.cellPhone.$error" ng-if="userForm.cellPhone.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha a telefone!
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="text">Email</label>
+                    <input type="text" class="form-control" id="email" ng-model="ctrl.user.email" name="email"
+                           ng-model-options="{debounce:250}"
+                           placeholder="Digite email"
+                           ng-required="true"
+                           has-exist>
+                </div>
+                <div ng-messages="userForm.email.$error" ng-if="userForm.email.$dirty">
+                    <div ng-message="required">Por favor Preencha a email!</div>
+                    <div ng-message="email"> formato de email invalido</div>
+                    <div ng-message="has">email ja utilizado !</div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" ng-model="ctrl.user.login" name="login" placeholder="Digite login"
+                           ng-model-options="{debounce:100}"
+                           ng-required="true"
+                           ng-minlength="4">
+                </div>
+                <div ng-messages="userForm.login.$error" ng-if="userForm.login.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha a login!
+                    </div>
+                    <div ng-message="minlength">
+                        Por favor Preencha o sobrenome com no minimo 4 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" id="password" ng-model="ctrl.user.password" name="password" placeholder="Digite senha"
+                           ng-required="true">
+                </div>
+                <div ng-messages="userForm.password.$error" ng-if="userForm.password.$dirty">
+                    <div ng-message="required">
+                        Por favor Preencha a senha!
+                    </div>
+                    <div ng-message="pattern">
+                        Senha deve ter entre 4 e 8 caracteres e deve conter letras e numeros
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar Senha</label>
+                    <input type="password" class="form-control" id="confirm-password" ng-model="ctrl.user.confirmPassword" name="confirmPassword" placeholder="confirme a senha"
+                           ng-required="true"
+                           confirm-password>
+                </div>
+                <div ng-messages="userForm.confirmPassword.$error" ng-if="userForm.confirmPassword.$dirty">
+                    <div ng-message="required">
+                        Por favor Confirme sua senha
+                    </div>
+                    <div ng-message="confirm">
+                        Senha nao confere
+                    </div>
+                </div>
+
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="cell-phone">Perfil</label>
+                    <select class="form-control" ng-model="ctrl.user.profileId" ng-required="true" name="profile">
+                        <option value="02a29721-7305-40e2-b30b-2f96442e715f">Administrador</option>
+                        <option value="0c16cbf4-7c61-4826-ac6a-73d65052449c">Espectador</option>
+                        <option value="68c88f65-13a6-4fbb-bfdf-edebb246c37f">Usuário</option>
+                        <option  ng-if="acc.role.god" value="259b66fa-d008-4f1f-8623-303d1c19b189">GOD</option>
+                    </select>
+                </div>
+                <div ng-messages="userForm.profile.$error" ng-if="userForm.profile.$dirty">
+                    <div ng-message="required">
+                        Por favor preencha o campo
+                    </div>      
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+
+                <!--<button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="ctrl.createUser()">Submit</button>-->
+                <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="ctrl.createUser()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- /.box -->
+</div>
+
+
+

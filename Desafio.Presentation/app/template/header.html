@@ -1,0 +1,38 @@
+﻿<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand"><b>Home</b></a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/users" ng-if="acc.role.userView">Usuarios <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/users-create" ng-if="acc.role.userCreated">Cadastro</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
+                <ul class="nav navbar-nav">             
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs"><i class="fa fa-user"></i>{{acc.userData.unique_name}}</span>
+                        </a>
+                        <ul class="dropdown-menu">                         
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="/my-data" class="btn btn-default btn-flat">Meus Dados</a>
+                                </div>
+                                <div class="pull-right" >
+                                    <a href="#" class="btn btn-default btn-flat" ng-click="acc.logout()">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

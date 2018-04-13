@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>{{consts.appName}}</title>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="Content/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="Content/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="Content/css/style.css">
+
+</head>
+<body class="hold-transition skin-red layout-top-nav">
+    <div class="wrapper" ng-controller="AccountController as acc" ng-init="acc.getData()">
+        <div ng-include="'./app/template/header.html'"></div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <section class="content-header"></section>
+                <section class="content">
+                    <ng-view></ng-view>
+                </section>
+            </div>
+        </div>
+        <div ng-include="'./app/template/footer.html'"></div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- Begin scripts -->
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-messages.min.js"></script>
+    <script src="Scripts/mask.min.js"></script>
+    <script src="Scripts/app.min.js"></script>
+    <!--End scripts-->
+    <!--App Angular Scripts-->
+    <script src="app/index.js"></script>
+    <script src="app/config/const.js"></script>
+    <script src="app/config/routes.js"></script>
+    <script src="app/users/user-controller.js"></script>
+    <script src="app/common/factories/user-factory.js"></script>
+    <script src="app/common/directives/confirm-password-directives.js"></script>
+    <script src="app/common/directives/hasExist-directives.js"></script>
+    <script src="app/common/directives/email-pattern-directive.js"></script>
+    <script src="app/account/account-controller.js"></script>
+    <script src="app/common/factories/auth-factory.js"></script>
+    <!--End-->
+</body>
+</html>
